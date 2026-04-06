@@ -2,21 +2,21 @@
 
 Retail360 is an end-to-end MVP that helps retailers understand customer behavior beyond their own ecosystem by turning uploaded receipts from other retailers into structured, actionable intelligence.
 
-Built with Microsoft Power Platform and AI services, the system combines receipt ingestion, OCR extraction, workflow automation, relational storage, business intelligence, and AI-generated summaries into a single product workflow. The project was designed to address a real retail blind spot: companies can see what customers buy from them, but often have little to no visibility into what those same customers purchase from competitors. :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3}
+Built with Microsoft Power Platform and AI services, the system combines receipt ingestion, OCR extraction, workflow automation, relational storage, business intelligence, and AI-generated summaries into a single product workflow. The project was designed to address a real retail blind spot: companies can see what customers buy from them, but often have little to no visibility into what those same customers purchase from competitors.
 
 ## Why This Project Matters
 
-Modern retail behavior is fragmented across channels and brands. Shoppers compare prices, split purchases across multiple stores, and shift loyalty quickly. In this environment, relying only on internal transaction data leads to incomplete customer understanding, weaker targeting, and mistimed engagement. Retail360 was designed to close that gap by giving customers a reason to upload receipts from any retailer, while giving the business a fuller picture of cross-retailer behavior. :contentReference[oaicite:4]{index=4} :contentReference[oaicite:5]{index=5}
+Modern retail behavior is fragmented across channels and brands. Shoppers compare prices, split purchases across multiple stores, and shift loyalty quickly. In this environment, relying only on internal transaction data leads to incomplete customer understanding, weaker targeting, and mistimed engagement. Retail360 was designed to close that gap by giving customers a reason to upload receipts from any retailer, while giving the business a fuller picture of cross-retailer behavior.
 
-This project is especially relevant because it demonstrates how AI can be operationalized inside a product workflow, not just used as a standalone model. It also shows how data, automation, analytics, and UX can be integrated into a practical MVP under real platform and subscription constraints. :contentReference[oaicite:6]{index=6}
+This project is especially relevant because it demonstrates how AI can be operationalized inside a product workflow, not just used as a standalone model. It also shows how data, automation, analytics, and UX can be integrated into a practical MVP under real platform and subscription constraints.
 
 ## Problem
 
-Retailers typically have strong visibility into their own online and in-store channels, but limited visibility into what customers buy elsewhere. That blind spot weakens promotion accuracy, reduces the quality of customer intent signals, and makes marketing more reactive than strategic. Retail360 addresses this by capturing cross-retailer receipt data and transforming it into structured insights for both customers and internal teams. :contentReference[oaicite:7]{index=7} :contentReference[oaicite:8]{index=8}
+Retailers typically have strong visibility into their own online and in-store channels, but limited visibility into what customers buy elsewhere. That blind spot weakens promotion accuracy, reduces the quality of customer intent signals, and makes marketing more reactive than strategic. Retail360 addresses this by capturing cross-retailer receipt data and transforming it into structured insights for both customers and internal teams.
 
 ## Solution
 
-Retail360 introduces an AI-enabled receipt intelligence feature that allows users to upload paper or digital receipts from any retailer. In return, users can receive rewards, track spending across merchants, explore dashboards, and generate AI-based summaries of their purchase behavior. On the business side, the same data provides visibility into cross-retailer shopping patterns, supporting better targeting, better timing, and stronger decision-making. :contentReference[oaicite:9]{index=9} :contentReference[oaicite:10]{index=10}
+Retail360 introduces an AI-enabled receipt intelligence feature that allows users to upload paper or digital receipts from any retailer. In return, users can receive rewards, track spending across merchants, explore dashboards, and generate AI-based summaries of their purchase behavior. On the business side, the same data provides visibility into cross-retailer shopping patterns, supporting better targeting, better timing, and stronger decision-making.
 
 ## My Focus
 
@@ -38,7 +38,7 @@ Retail360 uses a layered Microsoft-centered architecture:
 - **Microsoft Dataverse** for relational storage
 - **Power BI** for dashboarding and analytics
 - **ChatGPT workaround** for natural-language summaries in the MVP
-- **Planned future services**: Azure OpenAI, Azure Text Analytics, Azure ML Designer :contentReference[oaicite:11]{index=11} :contentReference[oaicite:12]{index=12}
+- **Planned future services**: Azure OpenAI, Azure Text Analytics, Azure ML Designer
 
 ## End-to-End Workflow
 
@@ -50,7 +50,7 @@ The system pipeline is designed to move from unstructured receipt images to stru
 4. Power Automate normalizes the JSON output and writes records into Dataverse  
 5. Dataverse stores structured receipt headers and line items  
 6. Power BI generates dashboards and visual insights  
-7. ChatGPT generates a natural-language spending summary from serialized receipt data :contentReference[oaicite:13]{index=13} :contentReference[oaicite:14]{index=14}
+7. ChatGPT generates a natural-language spending summary from serialized receipt data
 
 ## Example Outputs & System Design
 
@@ -68,7 +68,7 @@ This flow illustrates the full pipeline from receipt upload to OCR extraction, s
 
 ![Power App UI](assets/power_app_ui.png)
 
-The Power Apps interface provides a simple entry point for users to upload receipts, explore dashboards, and request AI summaries. This design keeps the experience unified and mobile-friendly while reducing the need for custom front-end engineering. :contentReference[oaicite:15]{index=15}
+The Power Apps interface provides a simple entry point for users to upload receipts, explore dashboards, and request AI summaries. This design keeps the experience unified and mobile-friendly while reducing the need for custom front-end engineering.
 
 ---
 
@@ -76,15 +76,15 @@ The Power Apps interface provides a simple entry point for users to upload recei
 
 ![Architecture](assets/architecture.png)
 
-This view shows how each functional feature maps to a specific platform or service. It highlights the project’s orchestration logic across upload, OCR, processing, storage, dashboarding, and summarization, demonstrating product-level system integration rather than isolated feature development. :contentReference[oaicite:16]{index=16}
+This view shows how each functional feature maps to a specific platform or service. It highlights the project’s orchestration logic across upload, OCR, processing, storage, dashboarding, and summarization, demonstrating product-level system integration rather than isolated feature development.
 
 ---
 
 ### Data Modeling in Dataverse
 
-![Dataverse Schema](assets/dataverse_schema.png)
+![Dataverse Schema](assets/dataverse.png)
 
-Retail360 uses Dataverse as a relational storage layer for receipt headers and line items. This structure enables downstream analytics, supports parent-child relationships between transactions and purchased items, and creates a clean foundation for future AI extensions such as automated categorization and purchase-cycle prediction. :contentReference[oaicite:17]{index=17}
+Retail360 uses Dataverse as a relational storage layer for receipt headers and line items. This structure enables downstream analytics, supports parent-child relationships between transactions and purchased items, and creates a clean foundation for future AI extensions such as automated categorization and purchase-cycle prediction.
 
 ---
 
@@ -92,15 +92,15 @@ Retail360 uses Dataverse as a relational storage layer for receipt headers and l
 
 ![Dashboard](assets/dashboard.png)
 
-The Power BI dashboard transforms extracted receipt data into spending distributions, merchant-level patterns, and category-level insights. This layer is critical because it converts processed data into decision-support outputs that can serve both end users and internal business teams. :contentReference[oaicite:18]{index=18}
+The Power BI dashboard transforms extracted receipt data into spending distributions, merchant-level patterns, and category-level insights. This layer is critical because it converts processed data into decision-support outputs that can serve both end users and internal business teams.
 
 ## Results
 
-The solution was evaluated on a dataset of more than 200 real-world receipts collected from multiple retail contexts, including grocery, general merchandise, e-commerce, and food and beverage. Manual review suggested strong performance on key extraction fields such as merchant name, transaction date, quantities, and totals, while line-item extraction showed more variability due to formatting differences and receipt quality. The system successfully normalized extracted data into Dataverse, generated interpretable dashboards, and produced coherent AI summaries from structured JSON inputs. :contentReference[oaicite:19]{index=19}
+The solution was evaluated on a dataset of more than 200 real-world receipts collected from multiple retail contexts, including grocery, general merchandise, e-commerce, and food and beverage. Manual review suggested strong performance on key extraction fields such as merchant name, transaction date, quantities, and totals, while line-item extraction showed more variability due to formatting differences and receipt quality. The system successfully normalized extracted data into Dataverse, generated interpretable dashboards, and produced coherent AI summaries from structured JSON inputs.
 
 ## Business Impact
 
-Retail360 was positioned as a digital transformation initiative with both customer-facing and business-facing value. Based on the project’s assumptions and modeled adoption scenario, the proposed system could reduce wasted marketing spend, improve retention, increase customer lifetime value, and deliver very high ROI relative to operating cost. The paper estimates an annual ROI above 800%, while also noting that a real pilot would be needed to validate adoption and revenue assumptions. :contentReference[oaicite:20]{index=20}
+Retail360 was positioned as a digital transformation initiative with both customer-facing and business-facing value. Based on the project’s assumptions and modeled adoption scenario, the proposed system could reduce wasted marketing spend, improve retention, increase customer lifetime value, and deliver very high ROI relative to operating cost. The paper estimates an annual ROI above 800%, while also noting that a real pilot would be needed to validate adoption and revenue assumptions.
 
 ## Design Tradeoffs and MVP Constraints
 
@@ -109,7 +109,7 @@ This MVP was intentionally scoped to balance ambition with feasibility. Some pla
 - GPT summaries used a workaround instead of embedded Azure OpenAI
 - purchase-cycle prediction was not implemented
 - OCR accuracy still depended on receipt quality
-- privacy and compliance controls remained partial in the MVP :contentReference[oaicite:21]{index=21} :contentReference[oaicite:22]{index=22}
+- privacy and compliance controls remained partial in the MVP
 
 These constraints are important because they show realistic product judgment. I prioritized proving the core workflow before overbuilding advanced intelligence layers.
 

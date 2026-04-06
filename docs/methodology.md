@@ -2,7 +2,7 @@
 
 ## Overview
 
-Retail360 was built as an MVP, so the methodology emphasized practicality, integration, and system reliability over model complexity. The technical approach focused on converting real-world receipt images into structured, analysis-ready records that could support both dashboards and natural-language summaries. The design intentionally balanced speed of implementation with architectural clarity and future extensibility. :contentReference[oaicite:52]{index=52}
+Retail360 was built as an MVP, so the methodology emphasized practicality, integration, and system reliability over model complexity. The technical approach focused on converting real-world receipt images into structured, analysis-ready records that could support both dashboards and natural-language summaries. The design intentionally balanced speed of implementation with architectural clarity and future extensibility.
 
 ## Design Principles
 
@@ -14,11 +14,11 @@ The most important technical bottleneck in the business problem was the absence 
 
 ### 2. Prefer integrated services for MVP speed
 
-The project prioritized tools that could be connected quickly and maintained with lower engineering overhead. This is why the MVP relied heavily on Power Platform components instead of custom-coded alternatives. For example, Power Automate was chosen over Azure Functions for orchestration because it required less setup effort and fit the prototyping goal better. :contentReference[oaicite:53]{index=53}
+The project prioritized tools that could be connected quickly and maintained with lower engineering overhead. This is why the MVP relied heavily on Power Platform components instead of custom-coded alternatives. For example, Power Automate was chosen over Azure Functions for orchestration because it required less setup effort and fit the prototyping goal better.
 
 ### 3. Build for future extension even if features are deferred
 
-Although the MVP did not include all planned AI features, the system was designed so that new components could be added later. The Dataverse schema, service boundaries, and workflow structure all support future insertion points for classification, prediction, and deeper summarization capabilities. :contentReference[oaicite:54]{index=54}
+Although the MVP did not include all planned AI features, the system was designed so that new components could be added later. The Dataverse schema, service boundaries, and workflow structure all support future insertion points for classification, prediction, and deeper summarization capabilities.
 
 ## Core Technical Workflow
 
@@ -28,7 +28,7 @@ Users upload or capture receipt images in Power Apps. This interaction serves as
 
 ### OCR extraction
 
-The uploaded receipt is passed into Azure AI Document Intelligence through the Power Platform integration path. The receipt model extracts key fields such as merchant information, transaction dates, quantities, prices, totals, and line-item descriptions. This is the system’s key unstructured-to-structured conversion step. :contentReference[oaicite:55]{index=55}
+The uploaded receipt is passed into Azure AI Document Intelligence through the Power Platform integration path. The receipt model extracts key fields such as merchant information, transaction dates, quantities, prices, totals, and line-item descriptions. This is the system’s key unstructured-to-structured conversion step.
 
 ### JSON parsing and normalization
 
@@ -38,27 +38,27 @@ Once OCR output is received, Power Automate parses the JSON and transforms it in
 - cleaning OCR noise such as stray spaces and formatting inconsistencies
 - converting numeric strings into machine-readable numeric values
 - generating IDs for records
-- preserving parent-child structure between receipt headers and line items :contentReference[oaicite:56]{index=56}
+- preserving parent-child structure between receipt headers and line items
 
 This step is methodologically important because the value of OCR is limited unless the output becomes clean, structured, and analytics-ready.
 
 ### Structured storage
 
-Normalized data is written into Dataverse. The schema separates higher-level receipt records from detailed line-item records, allowing the system to support both transaction-level and item-level analysis. This also makes it possible to join, aggregate, and visualize the data downstream. :contentReference[oaicite:57]{index=57}
+Normalized data is written into Dataverse. The schema separates higher-level receipt records from detailed line-item records, allowing the system to support both transaction-level and item-level analysis. This also makes it possible to join, aggregate, and visualize the data downstream.
 
 ### Dashboard generation
 
-Power BI connects directly to Dataverse and provides visual analytics around totals, categories, spending trends, and merchant-level behavior. Because the storage layer is structured, dashboard logic can remain relatively straightforward while still producing useful outputs. :contentReference[oaicite:58]{index=58}
+Power BI connects directly to Dataverse and provides visual analytics around totals, categories, spending trends, and merchant-level behavior. Because the storage layer is structured, dashboard logic can remain relatively straightforward while still producing useful outputs.
 
 ### Natural-language insight generation
 
-To add an AI assistant style experience within MVP constraints, the project serialized receipt-level data into JSON and used a ChatGPT-based workaround to generate plain-language insights. This preserved the intended feature logic while working around unavailable Azure OpenAI access. :contentReference[oaicite:59]{index=59}
+To add an AI assistant style experience within MVP constraints, the project serialized receipt-level data into JSON and used a ChatGPT-based workaround to generate plain-language insights. This preserved the intended feature logic while working around unavailable Azure OpenAI access.
 
 ## Methods by Component
 
 ### Document AI and extraction
 
-The extraction method relies on the pretrained receipt model in Azure AI Document Intelligence. This model combines OCR, layout understanding, and line-item extraction to interpret semi-structured retail receipts. The decision to use a pretrained service instead of building a custom OCR pipeline reduced implementation complexity and accelerated prototyping. :contentReference[oaicite:60]{index=60}
+The extraction method relies on the pretrained receipt model in Azure AI Document Intelligence. This model combines OCR, layout understanding, and line-item extraction to interpret semi-structured retail receipts. The decision to use a pretrained service instead of building a custom OCR pipeline reduced implementation complexity and accelerated prototyping.
 
 ### Data transformation and normalization
 
@@ -66,13 +66,13 @@ Power Automate handled transformation logic rather than pushing raw OCR output s
 
 ### Categorization logic
 
-Automated categorization was designed but not fully implemented. The intended approach involved multi-class classification of item descriptions into categories such as food, household, or health, using Azure Text Analytics. Because the available labeled dataset was too limited for a credible MVP, categories were assigned manually instead. :contentReference[oaicite:61]{index=61}
+Automated categorization was designed but not fully implemented. The intended approach involved multi-class classification of item descriptions into categories such as food, household, or health, using Azure Text Analytics. Because the available labeled dataset was too limited for a credible MVP, categories were assigned manually instead.
 
 This is actually a strength in how the project was scoped. It shows the ability to distinguish between what is theoretically attractive and what is responsible to ship under current data constraints.
 
 ### Predictive modeling
 
-The longer-term design included purchase-cycle prediction using Azure ML Designer and regression-based methods. Planned features included inter-purchase interval engineering, merchant-specific buying patterns, and seasonality features. These were not implemented in the MVP because of limited historical data and subscription limits. :contentReference[oaicite:62]{index=62}
+The longer-term design included purchase-cycle prediction using Azure ML Designer and regression-based methods. Planned features included inter-purchase interval engineering, merchant-specific buying patterns, and seasonality features. These were not implemented in the MVP because of limited historical data and subscription limits.
 
 ### Generative AI
 
@@ -85,7 +85,7 @@ The system incorporated several reliability-oriented design choices:
 - retry logic in Power Automate for transient issues
 - null checks before database writes
 - duplicate detection through GUID logic
-- modular separation between ingestion, extraction, storage, and analytics :contentReference[oaicite:63]{index=63}
+- modular separation between ingestion, extraction, storage, and analytics
 
 These mechanisms matter because real receipt processing is messy. A robust MVP has to account for service interruptions, OCR imperfections, and incomplete data.
 
@@ -97,16 +97,7 @@ The presentation also identifies key non-functional requirements that shaped the
 - security and privacy: storage and transit should be protected, and data sharing should be user-triggered
 - scalability: ingestion should support growing receipt volume
 - reliability and maintainability: components should be modular and independently updatable
-- usability: the upload experience should remain simple and mobile-friendly :contentReference[oaicite:64]{index=64}
+- usability: the upload experience should remain simple and mobile-friendly 
 
 These considerations strengthened the project by ensuring it was not only technically functional, but also designed with realistic system qualities in mind.
 
-## Why This Methodology Stands Out
-
-This methodology is stronger than a typical class prototype because it demonstrates more than feature building. It shows:
-
-- workflow-aware system design
-- careful handling of unstructured data
-- realistic scoping under constraints
-- a clear path from raw input to decision-ready output
-- product judgment around what to implement now versus design for later
