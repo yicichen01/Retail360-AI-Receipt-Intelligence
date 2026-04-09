@@ -131,17 +131,10 @@ Retail360 demonstrates the ability to:
 - `docs/system_architecture.md` architecture, components, and workflow
 - `docs/methodology.md` technical design, methods, and implementation logic
 - `docs/results.md` results, evaluation, limitations, and business impact
-- `docs/presentation.pdf` full presentation deck
 
 ## Demo
 
 See `demo/demo.mp4` for a walkthrough of the MVP.
-
-## Additional Materials
-
-For full slides and supporting visuals, see:
-
-`docs/presentation.pdf`
 
 ## Note
 
